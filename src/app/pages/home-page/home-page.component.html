@@ -1,1 +1,40 @@
-<p>home-page works!</p>
+<div class="row">
+  <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"></div>
+  <!-- begin main content 'post-list' -->
+  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    <!-- begin form post -->
+    <div class="card">
+      <div class="card-body">
+        <h5>what do you think about ?</h5>
+        <form>
+          <textarea
+            class="form-control"
+            placeholder="write somthing here !"
+            rows="5"
+            [(ngModel)]="textContent"
+            name="textContent"
+          ></textarea>
+          <button
+            class="btn btn-primary mt-1 w-100"
+            type="submit"
+            (click)="addPost()"
+          >
+            post
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- end form post -->
+
+    <!-- begin post list -->
+    <div class="mt-3">
+      @for (post of posts; track post) {
+      <app-post [post]="post"></app-post>
+      }
+    </div>
+    <!-- end post list -->
+  </div>
+  <!-- end main content 'post-list' -->
+
+  <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"></div>
+</div>

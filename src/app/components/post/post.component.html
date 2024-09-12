@@ -1,1 +1,26 @@
-<p>post works!</p>
+<div class="card mb-2">
+  <div class="card-header">
+    <div class="d-flex justify-content-between">
+      <div>
+        <h5>{{ post.user?.name }}</h5>
+        <small>{{ post.date! | relativeTime }}</small>
+      </div>
+      <div class="">
+        <span class="delete-post p-3">x</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <p>
+      {{ post.textcontent }}
+    </p>
+  </div>
+
+  <div class="card-footer">
+    <div class="d-flex justify-content-between">
+      <span class="post-btn-action">like ({{ post.likes?.length }}) </span>
+      <span class="post-btn-action">comment ({{ post.comments?.length }})</span>
+    </div>
+  </div>
+</div>
