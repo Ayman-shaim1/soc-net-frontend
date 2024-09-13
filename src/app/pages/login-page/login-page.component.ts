@@ -21,7 +21,7 @@ export class LoginPageComponent {
       .login({ email: this.email, password: this.password })
       .subscribe(
         (response) => {
-          this.authServie.setToken(response.token);
+          this.authServie.setUser(response);
           this.router.navigate(['/']);
         },
         (err) => {

@@ -21,9 +21,18 @@
           </a>
         </li>
       </ul>
+      @if(islogin){
       <form>
-        <button class="btn btn-light" (click)="logout()">logout</button>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">welcome {{ user.name }} !</a>
+          </li>
+          <li>
+            <button class="btn btn-light" (click)="logout()">logout</button>
+          </li>
+        </ul>
       </form>
+      }
     </div>
   </div>
 </nav>

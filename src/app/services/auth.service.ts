@@ -15,19 +15,19 @@ export class AuthService {
     return this.http.post(this.apiurl + '/login', credentials);
   }
 
-  setToken(token: string) {
-    localStorage.setItem('authToken', token);
+  setUser(user: any) {
+    localStorage.setItem('userInfo', JSON.stringify(user));
   }
 
-  getToken() {
-    return localStorage.getItem('authToken');
+  getUser(): any {
+    return JSON.parse(localStorage.getItem('userInfo')!);
   }
 
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    return !!this.getUser();
   }
 
   logout() {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('userInfo');
   }
 }

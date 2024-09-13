@@ -29,7 +29,11 @@
     <!-- begin post list -->
     <div class="mt-3">
       @for (post of posts; track post) {
-      <app-post [post]="post"></app-post>
+      <app-post
+        [post]="post"
+        (toggleLike)="onToggleLike($event)"
+        (postDeleted)="onDeletePost($event)"
+      ></app-post>
       }
     </div>
     <!-- end post list -->

@@ -1,1 +1,31 @@
-<p>postdetails-page works! id :{{ id }}</p>
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+    <div class="d-flex justify-content-between mb-4 align-items-center">
+      <h3>{{ this.post.user.name }}</h3>
+      <h6 class="text-info">{{ post.date! | relativeTime }}</h6>
+    </div>
+    <p>{{ this.post.textcontent }}</p>
+    <hr />
+    <h6>comments :</h6>
+    @for (comment of this.post.comments; track comment) {
+    <p>{{ comment.textcontent }}</p>
+    }
+  </div>
+  <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+    <form>
+      <div class="d-flex justify-content-center">
+        <h5 class="">Add comment</h5>
+      </div>
+      <textarea
+        class="form-control"
+        rows="5"
+        placeholder="enter an comment"
+        name="comment"
+        [(ngModel)]="comment"
+      ></textarea>
+      <button class="btn btn-primary mt-1" (click)="addcomment()">
+        comment
+      </button>
+    </form>
+  </div>
+</div>

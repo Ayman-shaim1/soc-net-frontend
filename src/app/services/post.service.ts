@@ -14,19 +14,45 @@ export class PostService {
 
   // Method to send POST request
   createPost(data: any): Observable<any> {
+    const token = this.authService.getUser().token;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.authService.getToken()}`,
     });
     return this.http.post<any>(this.apiurl, data, { headers });
   }
 
   getPosts(): Observable<any> {
-    const token = this.authService.getToken();
+    const token = this.authService.getUser().token;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get(this.apiurl, { headers });
+  }
+
+  getPostById(id: any): Observable<any> {
+    let url = this.apiurl + '/' + id;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.get(url, { headers });
+  }
+
+  deletePost(postId: Number): Observable<any> {
+    let apiurllike = this.apiurl + `/${postId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.delete(apiurllike, { headers });
+  }
+
+  toggleLikePost(postId: number): Observable<any> {
+    let apiurllike = this.apiurl + `/${postId}/toggle/like`;
+    const token = this.authService.getUser().token;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     });
-    return this.http.get(this.apiurl, { headers });
+    return this.http.put(apiurllike, {}, { headers });
   }
 }

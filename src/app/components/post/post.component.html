@@ -5,9 +5,11 @@
         <h5>{{ post.user?.name }}</h5>
         <small>{{ post.date! | relativeTime }}</small>
       </div>
+      @if(user.id == post.user?.id){
       <div class="">
-        <span class="delete-post p-3">x</span>
+        <span class="delete-post p-3" (click)="deletePost()">x</span>
       </div>
+      }
     </div>
   </div>
 
@@ -19,8 +21,12 @@
 
   <div class="card-footer">
     <div class="d-flex justify-content-between">
-      <span class="post-btn-action">like ({{ post.likes?.length }}) </span>
-      <span class="post-btn-action">comment ({{ post.comments?.length }})</span>
+      <span class="post-btn-action" (click)="toggleLikePost()"
+        >like ({{ post.likes?.length }})
+      </span>
+      <a class="post-btn-action" [routerLink]="['/post', post.id]"
+        >comment ({{ post.comments?.length }})</a
+      >
     </div>
   </div>
 </div>
