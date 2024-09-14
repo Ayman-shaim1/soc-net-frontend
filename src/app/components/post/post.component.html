@@ -21,8 +21,12 @@
 
   <div class="card-footer">
     <div class="d-flex justify-content-between">
-      <span class="post-btn-action" (click)="toggleLikePost()"
-        >like ({{ post.likes?.length }})
+      <span class="post-btn-action" (click)="toggleLikePost()">
+        @if(isLiked()){
+        <span>unlike</span>
+        } @else {
+        <span>like</span>
+        } ({{ post.likes?.length }})
       </span>
       <a class="post-btn-action" [routerLink]="['/post', post.id]"
         >comment ({{ post.comments?.length }})</a

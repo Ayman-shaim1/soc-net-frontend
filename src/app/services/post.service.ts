@@ -55,4 +55,20 @@ export class PostService {
     });
     return this.http.put(apiurllike, {}, { headers });
   }
+
+  addComment(textcontent: string, postId: number) {
+    let apiurllike = this.apiurl + `/comments/${postId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(apiurllike, { textcontent }, { headers });
+  }
+
+  removeComment(postId: number, commentId: number) {
+    let apiurllike = this.apiurl + `/${postId}/comments/${commentId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.delete(apiurllike, { headers });
+  }
 }

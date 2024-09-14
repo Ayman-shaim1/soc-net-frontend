@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [RelativeTimePipe,RouterModule],
+  imports: [RelativeTimePipe, RouterModule],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css',
 })
@@ -29,6 +29,11 @@ export class PostComponent implements OnInit {
     this.postService.toggleLikePost(this.post.id).subscribe(() => {
       this.toggleLike.emit(this.post.id);
     });
+  }
+
+  // Method to check if the user has liked the post
+  isLiked(): boolean {
+    return this.post.likes?.findIndex((l:any) => l.userId === this.user.id) !== -1;
   }
 
   deletePost() {

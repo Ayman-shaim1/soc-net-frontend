@@ -1,0 +1,9 @@
+.delete-post {
+  cursor: pointer;
+  display: block;
+  font-size: 20px !important;
+}
+
+.delete-post:hover {
+  background-color: #f4f4f4;
+}
